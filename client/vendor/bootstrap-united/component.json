@@ -1,0 +1,9 @@
+{
+  "name": "boostrap-united",
+  "version": "0.0.1",
+  "main": [
+    "./bootstrap.min.css"
+  ],
+  "dependencies": {
+  }
+}

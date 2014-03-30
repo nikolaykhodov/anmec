@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Anmec - Авторизация</title>
+  <link rel="stylesheet" href="lib/libs.css"/>
+</head>
+<body>
+    <div>Loading...</div>
+
+    <script>
+        /*
+         * $myLoad(resources)
+         * $myLoad(resources, callback)
+         * $myLoad(resources, callback, sync)
+         */
+
+        function $myLoad(resources, callback, sync) {
+            sync = false;
+            callback = callback || function() {};
+            resources = resources instanceof Array ? resources : [resources];
+
+            if(resources[resources.length - 1] === true) {
+                sync = true;
+                resources = resources.slice(0, -1);
+            }
+
+            function inject(path, onload) {
+                var el;
+                if(path.match(/\.css(\?.*)?$/)) {
+                    el = document.createElement('link');
+                    el.rel = 'stylesheet';
+                    el.href = path;
+                    el.type = 'text/css';
+                } else if (path.match(/\.js(\?.*)?$/)) {
+                    el = document.createElement('script');
+                    el.src = path;
+                }
+
+                el.onload = onload;
+                el.onerror = onload;
+
+                document.body.appendChild(el);
+            }
+            var target = resources.length;
+            var index = 0;
+
+            function onLoadAsync() {
+                if(++index >= target) {
+                    return callback();
+                }
+            }
+
+            function onLoadSync() {
+                index++;
+                if(index >= target) {
+                    return callback();
+                } else {
+                    inject(resources[index], onLoadSync);
+                }
+            }
+
+            if(!sync) {
+                for(var i = 0; i < resources.length; i++) {
+                    inject(resources[i], onLoadAsync);
+                }
+            } else {
+                inject(resources[0], onLoadSync);
+            }
+        }
+
+        function redirectToApp() {
+            var href = window.location.href;
+            href = href.replace('authTransition.html', 'index.html');
+            window.location.replace(href);
+        }
+
+        $myLoad('lib/libs.js', function() {
+            var isLocalhost = document.location.href.match(/^http:\/\/localhost/) || document.location.href.match(/^http:\/\/www-debug\./);
+            var apiEndPoint = !isLocalhost ? 'http://app.anmec.me' : 'http://app-debug.anmec.me:8000';
+
+            $.ajax({
+                url: apiEndPoint + '/account/auth/secure_link/',
+                type: 'GET',
+                contentType: 'text/plain',
+                dataType: 'text',
+                xhrFields: {
+                    withCredentials: true
+                }
+            }).success(function(secureLink) {
+                secureLink = JSON.parse(secureLink);
+                document.cookie="sl_hash=" + secureLink.hash;
+                document.cookie="sl_expires_at=" + secureLink.expires_at;
+
+                redirectToApp();
+            }).fail(function() {
+                redirectToApp();
+            });
+        });
+
+        </script>
+</body>
+</html>

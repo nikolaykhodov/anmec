@@ -1,0 +1,35 @@
+server {
+	listen 127.0.0.1:80; ## listen for ipv4; this line is default and implied
+    server_name localhost;
+
+    error_log /tmp/t/error.log;
+
+    location /t/ {
+        root /tmp/t;
+
+        if ($http_cookie ~* "st=([a-zA-Z0-9_]+)") {
+            set $cookie_st $1;
+        }
+
+        if ($http_cookie ~* "e=([0-9]+)") {
+            set $cookie_e $1;
+        }
+
+        secure_link $cookie_st,$cookie_e;
+        secure_link_md5 segredo$cookie_e;
+
+        if ($secure_link = "") {
+            rewrite (.*) /unauthenticated.txt break;
+        }
+
+        if ($secure_link = "0") {
+            rewrite (.*) /expired.txt break;
+        }
+
+        rewrite ^/t(.*) /$1 break;
+    }
+
+    location /l/ {
+        alias /tmp/l/;
+    }
+}

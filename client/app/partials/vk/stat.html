@@ -1,0 +1,60 @@
+<div class=".row-fluid">
+  <h1>Информация о группе <a href="http://vk.com/club{{ groupId }}" target="_blank">{{ groupName }}</a></h1>
+
+  <div class="span6 stat-block">
+    <div class="stat-block-header"><h3>Информация</h3></div>
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td>Подписчиков</td>
+          <td>
+            <span ng-show="members > 0">{{ members|formatNumber }}</span>
+            <img ng-show="!members" src="img/ajax-loader-inline.gif">
+          </td>
+        </tr>
+        <tr>
+          <td>Всего постов</td>
+          <td>
+            <span ng-show="posts > 0">{{ posts|formatNumber }}</span>
+            <img ng-show="!posts" src="img/ajax-loader-inline.gif">
+          </td>
+        </tr>
+      </tbody>  
+    </table>
+  </div>
+  <div class="span10 stat-block">
+    <div class="stat-block-header"><h3>Статистика</h3></div>
+
+    <!--<canvas id="stat-main-chart" width="770" height="300"></canvas>-->
+    <div id="stat-main-chart" class="chart-wrapper">
+      <img ng-show="statIsLoading" src="img/ajax-loader-inline.gif">
+      <div ng-show="!statIsLoading" jqplot jqplot-data="mainChartData" jqplot-params="mainChartParams"></div>
+    </div>
+  </div>
+  
+  <div class="span10 stat-block">
+    <div class="stat-block-header"><h3>Пол</h3></div>
+
+    <div id="sex-chart" class="chart-wrapper">
+      <img ng-show="statIsLoading" src="img/ajax-loader-inline.gif">
+      <div ng-show="!statIsLoading" jqplot jqplot-data="sexChartData" jqplot-params="sexChartParams"></div>
+    </div>
+  </div>
+
+  <div class="span10 stat-block">
+    <div class="stat-block-header"><h3>Возраст</h3></div>
+    <div id="age-chart" class="chart-wrapper">
+      <img ng-show="statIsLoading" src="img/ajax-loader-inline.gif">
+      <div ng-show="!statIsLoading" jqplot jqplot-data="ageChartData" jqplot-params="ageChartParams"></div>
+    </div>
+  </div>
+
+  <div class="span10 stat-block">
+    <div class="stat-block-header"><h3>Лайки по времени</h3></div>
+
+    <div id="likes-chart" class="chart-wrapper">
+      <img ng-show="likeStatIsLoading" src="img/ajax-loader-inline.gif">
+      <div ng-show="!likeStatIsLoading" jqplot jqplot-data="likesChartData" jqplot-params="likesChartParams"></div>
+    </div>
+  </div>
+</div>

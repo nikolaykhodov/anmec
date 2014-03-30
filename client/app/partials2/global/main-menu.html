@@ -1,0 +1,43 @@
+<div class="navbar" data-ng-controller="mainMenuController">
+    <div class="navbar-inner">
+        <a class="brand" href="#/home">Anmec</a>
+        <a class="label label-info" href="https://docs.google.com/spreadsheet/ccc?key=0Ak38hVaEdUXmdDlvcHdZbnRfNDlpNEVhUDdwZDhtVlE" target="_blank">status</a>
+
+        <ul class="nav">
+            <li class="dropdown">
+                <a id="vk_submenu" class="dropdown-toggle" data-toggle="dropdown" href='javascript:;'>
+                    ВКонтакте
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="vk_submenu">
+                    <li><a href="#/vk/search/groups">Поиск сообществ</a></li>
+                    <li><a href="#/vk/feed/wall">Анализ стен</a></li>
+                    <li><a href="#/vk/search/posts">Поиск постов</a></li>
+                    <li><a href="#/vk/stat">Анализ статистики</a></li>
+                </ul>
+
+            </li>
+        </ul>
+
+        <ul class="nav pull-right">
+            <li ng-show="!account.loggedIn">
+                <a id="login" class="pull-right" href="#/login">
+                    Войти
+                </a>
+            </li>
+
+            <li class="dropdown" ng-show="account.loggedIn">
+                <a id="account_submenu" class="pull-right dropdown-toggle" data-toggle="dropdown" href="javascript:;">
+                    {{ account.userName }} 
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="account_submenu">
+                    <li><a href="#/account">Аккаунт</a></li>
+                    <li><a href="#/logout">Выйти</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+

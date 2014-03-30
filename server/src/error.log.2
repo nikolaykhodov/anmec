@@ -1,0 +1,560 @@
+[25/Sep/2013 19:56:46] ERROR [django.request:212] Internal Server Error: /findGroups/
+Traceback (most recent call last):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 25, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 86, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/nikolay/Desktop/anmec2/server/src/libs/anmec_utils/decorators.py", line 11, in wrapper
+    return HttpResponse(json.dumps(func(*args, **kwargs)))
+  File "/home/nikolay/Desktop/anmec2/server/src/search/views.py", line 220, in post
+    gids = list(gids_queryset[offset:offset + results_per_page])
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 92, in __len__
+    self._result_cache.extend(self._iter)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 344, in _safe_iterator
+    for item in iterator:
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 1138, in iterator
+    for row in self.query.get_compiler(self.db).results_iter():
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1325, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword u'undefinedmembers_count' into field. Choices are: audience, city, country, gid, is_closed, members_count, name, trafficbycities, trafficbycountries, type
+[25/Sep/2013 19:56:57] ERROR [django.request:212] Internal Server Error: /findGroups/
+Traceback (most recent call last):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 25, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 86, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/nikolay/Desktop/anmec2/server/src/libs/anmec_utils/decorators.py", line 11, in wrapper
+    return HttpResponse(json.dumps(func(*args, **kwargs)))
+  File "/home/nikolay/Desktop/anmec2/server/src/search/views.py", line 220, in post
+    gids = list(gids_queryset[offset:offset + results_per_page])
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 92, in __len__
+    self._result_cache.extend(self._iter)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 344, in _safe_iterator
+    for item in iterator:
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 1138, in iterator
+    for row in self.query.get_compiler(self.db).results_iter():
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1325, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword u'undefinedmembers_count' into field. Choices are: audience, city, country, gid, is_closed, members_count, name, trafficbycities, trafficbycountries, type
+[25/Sep/2013 19:57:08] ERROR [django.request:212] Internal Server Error: /findGroups/
+Traceback (most recent call last):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 25, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 86, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/nikolay/Desktop/anmec2/server/src/libs/anmec_utils/decorators.py", line 11, in wrapper
+    return HttpResponse(json.dumps(func(*args, **kwargs)))
+  File "/home/nikolay/Desktop/anmec2/server/src/search/views.py", line 220, in post
+    gids = list(gids_queryset[offset:offset + results_per_page])
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 92, in __len__
+    self._result_cache.extend(self._iter)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 344, in _safe_iterator
+    for item in iterator:
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 1138, in iterator
+    for row in self.query.get_compiler(self.db).results_iter():
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1325, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword u'undefinedmembers_count' into field. Choices are: audience, city, country, gid, is_closed, members_count, name, trafficbycities, trafficbycountries, type
+[25/Sep/2013 19:57:08] ERROR [django.request:212] Internal Server Error: /findGroups/
+Traceback (most recent call last):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 25, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 86, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/nikolay/Desktop/anmec2/server/src/libs/anmec_utils/decorators.py", line 11, in wrapper
+    return HttpResponse(json.dumps(func(*args, **kwargs)))
+  File "/home/nikolay/Desktop/anmec2/server/src/search/views.py", line 220, in post
+    gids = list(gids_queryset[offset:offset + results_per_page])
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 92, in __len__
+    self._result_cache.extend(self._iter)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 344, in _safe_iterator
+    for item in iterator:
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 1138, in iterator
+    for row in self.query.get_compiler(self.db).results_iter():
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1325, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword u'undefinedmembers_count' into field. Choices are: audience, city, country, gid, is_closed, members_count, name, trafficbycities, trafficbycountries, type
+[25/Sep/2013 19:57:15] ERROR [django.request:212] Internal Server Error: /findGroups/
+Traceback (most recent call last):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 25, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 86, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/nikolay/Desktop/anmec2/server/src/libs/anmec_utils/decorators.py", line 11, in wrapper
+    return HttpResponse(json.dumps(func(*args, **kwargs)))
+  File "/home/nikolay/Desktop/anmec2/server/src/search/views.py", line 220, in post
+    gids = list(gids_queryset[offset:offset + results_per_page])
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 92, in __len__
+    self._result_cache.extend(self._iter)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 344, in _safe_iterator
+    for item in iterator:
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 1138, in iterator
+    for row in self.query.get_compiler(self.db).results_iter():
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1325, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword u'nt' into field. Choices are: audience, city, country, gid, is_closed, members_count, name, trafficbycities, trafficbycountries, type
+[25/Sep/2013 19:57:15] ERROR [django.request:212] Internal Server Error: /findGroups/
+Traceback (most recent call last):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 25, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 86, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/nikolay/Desktop/anmec2/server/src/libs/anmec_utils/decorators.py", line 11, in wrapper
+    return HttpResponse(json.dumps(func(*args, **kwargs)))
+  File "/home/nikolay/Desktop/anmec2/server/src/search/views.py", line 220, in post
+    gids = list(gids_queryset[offset:offset + results_per_page])
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 92, in __len__
+    self._result_cache.extend(self._iter)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 344, in _safe_iterator
+    for item in iterator:
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 1138, in iterator
+    for row in self.query.get_compiler(self.db).results_iter():
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1325, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword u'nt' into field. Choices are: audience, city, country, gid, is_closed, members_count, name, trafficbycities, trafficbycountries, type
+[25/Sep/2013 19:57:19] ERROR [django.request:212] Internal Server Error: /findGroups/
+Traceback (most recent call last):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 25, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 86, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/nikolay/Desktop/anmec2/server/src/libs/anmec_utils/decorators.py", line 11, in wrapper
+    return HttpResponse(json.dumps(func(*args, **kwargs)))
+  File "/home/nikolay/Desktop/anmec2/server/src/search/views.py", line 220, in post
+    gids = list(gids_queryset[offset:offset + results_per_page])
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 92, in __len__
+    self._result_cache.extend(self._iter)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 344, in _safe_iterator
+    for item in iterator:
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 1138, in iterator
+    for row in self.query.get_compiler(self.db).results_iter():
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1325, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword u'nt' into field. Choices are: audience, city, country, gid, is_closed, members_count, name, trafficbycities, trafficbycountries, type
+[25/Sep/2013 19:57:19] ERROR [django.request:212] Internal Server Error: /findGroups/
+Traceback (most recent call last):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 25, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 86, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/nikolay/Desktop/anmec2/server/src/libs/anmec_utils/decorators.py", line 11, in wrapper
+    return HttpResponse(json.dumps(func(*args, **kwargs)))
+  File "/home/nikolay/Desktop/anmec2/server/src/search/views.py", line 220, in post
+    gids = list(gids_queryset[offset:offset + results_per_page])
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 92, in __len__
+    self._result_cache.extend(self._iter)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 344, in _safe_iterator
+    for item in iterator:
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 1138, in iterator
+    for row in self.query.get_compiler(self.db).results_iter():
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1325, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword u'nt' into field. Choices are: audience, city, country, gid, is_closed, members_count, name, trafficbycities, trafficbycountries, type
+[25/Sep/2013 19:57:41] ERROR [django.request:212] Internal Server Error: /findGroups/
+Traceback (most recent call last):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 25, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 86, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/nikolay/Desktop/anmec2/server/src/libs/anmec_utils/decorators.py", line 11, in wrapper
+    return HttpResponse(json.dumps(func(*args, **kwargs)))
+  File "/home/nikolay/Desktop/anmec2/server/src/search/views.py", line 220, in post
+    gids = list(gids_queryset[offset:offset + results_per_page])
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 92, in __len__
+    self._result_cache.extend(self._iter)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 344, in _safe_iterator
+    for item in iterator:
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 1138, in iterator
+    for row in self.query.get_compiler(self.db).results_iter():
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1325, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword u'nt' into field. Choices are: audience, city, country, gid, is_closed, members_count, name, trafficbycities, trafficbycountries, type
+[25/Sep/2013 19:57:42] ERROR [django.request:212] Internal Server Error: /findGroups/
+Traceback (most recent call last):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 25, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 86, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/nikolay/Desktop/anmec2/server/src/libs/anmec_utils/decorators.py", line 11, in wrapper
+    return HttpResponse(json.dumps(func(*args, **kwargs)))
+  File "/home/nikolay/Desktop/anmec2/server/src/search/views.py", line 220, in post
+    gids = list(gids_queryset[offset:offset + results_per_page])
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 92, in __len__
+    self._result_cache.extend(self._iter)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 344, in _safe_iterator
+    for item in iterator:
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 1138, in iterator
+    for row in self.query.get_compiler(self.db).results_iter():
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1325, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword u'nt' into field. Choices are: audience, city, country, gid, is_closed, members_count, name, trafficbycities, trafficbycountries, type
+[25/Sep/2013 19:57:43] ERROR [django.request:212] Internal Server Error: /findGroups/
+Traceback (most recent call last):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 25, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 86, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/nikolay/Desktop/anmec2/server/src/libs/anmec_utils/decorators.py", line 11, in wrapper
+    return HttpResponse(json.dumps(func(*args, **kwargs)))
+  File "/home/nikolay/Desktop/anmec2/server/src/search/views.py", line 220, in post
+    gids = list(gids_queryset[offset:offset + results_per_page])
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 92, in __len__
+    self._result_cache.extend(self._iter)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 344, in _safe_iterator
+    for item in iterator:
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 1138, in iterator
+    for row in self.query.get_compiler(self.db).results_iter():
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1325, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword u'nt' into field. Choices are: audience, city, country, gid, is_closed, members_count, name, trafficbycities, trafficbycountries, type
+[25/Sep/2013 19:57:43] ERROR [django.request:212] Internal Server Error: /findGroups/
+Traceback (most recent call last):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 25, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 86, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/nikolay/Desktop/anmec2/server/src/libs/anmec_utils/decorators.py", line 11, in wrapper
+    return HttpResponse(json.dumps(func(*args, **kwargs)))
+  File "/home/nikolay/Desktop/anmec2/server/src/search/views.py", line 220, in post
+    gids = list(gids_queryset[offset:offset + results_per_page])
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 92, in __len__
+    self._result_cache.extend(self._iter)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 344, in _safe_iterator
+    for item in iterator:
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 1138, in iterator
+    for row in self.query.get_compiler(self.db).results_iter():
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1325, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword u'nt' into field. Choices are: audience, city, country, gid, is_closed, members_count, name, trafficbycities, trafficbycountries, type
+[25/Sep/2013 19:58:04] ERROR [django.request:212] Internal Server Error: /findGroups/
+Traceback (most recent call last):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 25, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 86, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/nikolay/Desktop/anmec2/server/src/libs/anmec_utils/decorators.py", line 11, in wrapper
+    return HttpResponse(json.dumps(func(*args, **kwargs)))
+  File "/home/nikolay/Desktop/anmec2/server/src/search/views.py", line 220, in post
+    gids = list(gids_queryset[offset:offset + results_per_page])
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 92, in __len__
+    self._result_cache.extend(self._iter)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 344, in _safe_iterator
+    for item in iterator:
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 1138, in iterator
+    for row in self.query.get_compiler(self.db).results_iter():
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1325, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword u'undefinedmembers_count' into field. Choices are: audience, city, country, gid, is_closed, members_count, name, trafficbycities, trafficbycountries, type
+[25/Sep/2013 19:58:34] ERROR [django.request:212] Internal Server Error: /findGroups/
+Traceback (most recent call last):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 25, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 86, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/nikolay/Desktop/anmec2/server/src/libs/anmec_utils/decorators.py", line 11, in wrapper
+    return HttpResponse(json.dumps(func(*args, **kwargs)))
+  File "/home/nikolay/Desktop/anmec2/server/src/search/views.py", line 220, in post
+    gids = list(gids_queryset[offset:offset + results_per_page])
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 92, in __len__
+    self._result_cache.extend(self._iter)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 344, in _safe_iterator
+    for item in iterator:
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 1138, in iterator
+    for row in self.query.get_compiler(self.db).results_iter():
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1325, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword u'undefinedmembers_count' into field. Choices are: audience, city, country, gid, is_closed, members_count, name, trafficbycities, trafficbycountries, type
+[25/Sep/2013 19:59:09] ERROR [django.request:212] Internal Server Error: /findGroups/
+Traceback (most recent call last):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 25, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 86, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/nikolay/Desktop/anmec2/server/src/libs/anmec_utils/decorators.py", line 11, in wrapper
+    return HttpResponse(json.dumps(func(*args, **kwargs)))
+  File "/home/nikolay/Desktop/anmec2/server/src/search/views.py", line 220, in post
+    gids = list(gids_queryset[offset:offset + results_per_page])
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 92, in __len__
+    self._result_cache.extend(self._iter)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 344, in _safe_iterator
+    for item in iterator:
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 1138, in iterator
+    for row in self.query.get_compiler(self.db).results_iter():
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1325, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword u'undefinedmembers_count' into field. Choices are: audience, city, country, gid, is_closed, members_count, name, trafficbycities, trafficbycountries, type
+[25/Sep/2013 19:59:41] ERROR [django.request:212] Internal Server Error: /findGroups/
+Traceback (most recent call last):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/contrib/auth/decorators.py", line 25, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/views/generic/base.py", line 86, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/nikolay/Desktop/anmec2/server/src/libs/anmec_utils/decorators.py", line 11, in wrapper
+    return HttpResponse(json.dumps(func(*args, **kwargs)))
+  File "/home/nikolay/Desktop/anmec2/server/src/search/views.py", line 220, in post
+    gids = list(gids_queryset[offset:offset + results_per_page])
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 92, in __len__
+    self._result_cache.extend(self._iter)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 344, in _safe_iterator
+    for item in iterator:
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/query.py", line 1138, in iterator
+    for row in self.query.get_compiler(self.db).results_iter():
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/nikolay/envs/anmec2/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1325, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword u'undefinedmembers_count' into field. Choices are: audience, city, country, gid, is_closed, members_count, name, trafficbycities, trafficbycountries, type

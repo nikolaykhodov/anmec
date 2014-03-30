@@ -1,0 +1,8 @@
+<script type="text/javascript">
+    var user_id = '{{ user_id }}';
+    var hash = '{{ secure_link.hash }}';
+    var expiresAt = '{{ secure_link.expires_at }}';
+    setTimeout(function() {
+        window.location.replace('{{ redirect_url }}');
+    }, 1000);
+</script>

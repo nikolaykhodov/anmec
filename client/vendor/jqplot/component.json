@@ -1,0 +1,11 @@
+{
+  "name": "jqplot",
+  "version": "1.0.8",
+  "main": [
+    "./jquery.jqplot.js",
+    "./jquery.jqplot.css"
+  ],
+  "dependencies": {
+    "jquery": "~1.8.0"
+  }
+}

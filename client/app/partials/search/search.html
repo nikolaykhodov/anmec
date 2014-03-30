@@ -1,0 +1,302 @@
+<style type="text/css">
+    label {
+        font-weight: bold;
+        display: block;
+    }
+
+    .results table {
+        min-width: 82%;
+        max-width: 82%;
+    }
+
+    .results thead td.header {
+        cursor: pointer;
+        text-align: center;
+        white-space: nowrap;
+    }
+    .results thead td.header:nth-child(2) {
+        text-align: left;
+    }
+
+    .results table td.name {
+        overflow: hidden;
+        min-width: 200px;
+        max-width: 200px;
+    }
+
+    .results table td {
+        padding: 7px 5px 7px 5px;
+    }
+    .results table td.data {
+        text-align: center;
+    }
+    .match {
+        background-color: #FFF2A1;
+        border-bottom: 1px dashed #7E7D15;
+    }
+
+    .loading {
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        background: rgba(255, 255, 255, 0.8); 
+        z-index: 10000;
+        text-align: center;
+    }
+
+    .loading img {
+        margin-top: 20px;
+        position: absolute;
+    }
+    .bs {
+        position: relative;
+        margin: 15px 0;
+        padding: 39px 19px 14px;
+        background-color: #FFF;
+        border: 1px solid #DDD;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+    .bs .title {
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        padding: 3px 7px;
+        font-size: 12px;
+        font-weight: bold;
+        background-color: #F5F5F5;
+        border: 1px solid #DDD;
+        color: #9DA0A4;
+        -webkit-border-radius: 4px 0 4px 0;
+        -moz-border-radius: 4px 0 4px 0;
+        border-radius: 4px 0 4px 0;
+        cursor: pointer;
+        transition: background-color 0.5s;
+        width: 148px;
+    }
+    .bs .title:hover {
+        background-color: #E8E8E8;
+    }
+    .bs-collapsed {
+        padding-top: 0;
+    }
+    .bs-collapsed .content {
+        height: 0;
+        overflow: hidden;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="bs" ng-class="{'bs-collapsed': !uncollapsed.groupName && empty(query.groupName)}">
+                <div class="title" ng-click="collapse('groupName')"> Название</div>
+                <div class="content">
+                    <input type="text" class="input-small" id="groupName" ng-model="query.groupName.value" placeholder="как подстрока" />
+                </div>
+            </div>
+
+            <div class="bs" ng-class="{'bs-collapsed': !uncollapsed.groupType && empty(query.groupType)}">
+                <div class="title" ng-click="collapse('groupType')">Тип</div>
+                <div class="content">
+                    <label class="checkbox"><input type="checkbox" ng-model="query.groupType.group"> Группа</label>
+                    <label class="checkbox"><input type="checkbox" ng-model="query.groupType.event"> Встреча</label>
+                    <label class="checkbox"><input type="checkbox" ng-model="query.groupType.public"> Паблик</label>
+                </div>
+            </div>
+
+
+            <div class="bs" ng-class="{'bs-collapsed': !uncollapsed.groupPrivacy && empty(query.groupPrivacy)}">
+                <div class="title" ng-click="collapse('groupPrivacy')">Приватность</div>
+                <div class="content">
+                    <label class="checkbox"><input type="checkbox" ng-model="query.groupPrivacy.public"> Открытая</label>
+                    <label class="checkbox"><input type="checkbox" ng-model="query.groupPrivacy.closed"> Закрытая</label>
+                    <label class="checkbox"><input type="checkbox" ng-model="query.groupPrivacy.private"> Частная</label>
+                </div>
+            </div>
+
+            <div class="bs" ng-class="{'bs-collapsed': !uncollapsed.quantity && empty(query.quantity)}">
+                <div class="title" ng-click="collapse('quantity')">Размер</div>
+                <div class="content">
+                    <div class="input-prepend">
+                        <span class="add-on">&ge;</span>
+                        <input type="text" class="input-small" ng-model="query.quantity.from"/>
+                    </div>
+
+                    <div class="input-append">
+                        <input type="text" class="input-small" ng-model="query.quantity.to"/>
+                        <span class="add-on">&le;</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bs" ng-class="{'bs-collapsed': !uncollapsed.visitors && empty(query.visitors)}">
+                <div class="title" ng-click="collapse('visitors')">Посетители</div>
+                <div class="content">
+                    <div class="input-prepend">
+                        <span class="add-on">&ge;</span>
+                        <input type="text" class="input-small" ng-model="query.visitors.from"/>
+                    </div>
+                    <div class="input-append">
+                        <input type="text" class="input-small" ng-model="query.visitors.to"/>
+                        <span class="add-on">&le;</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bs" ng-class="{'bs-collapsed': !uncollapsed.views && empty(query.views)}">
+                <div class="title" ng-click="collapse('views')">Просмотры</div>
+                <div class="content">
+                    <div class="input-prepend">
+                        <span class="add-on">&ge;</span>
+                        <input type="text" class="input-small" ng-model="query.views.from"/>
+                    </div>
+
+                    <div class="input-append">
+                        <input type="text" class="input-small" ng-model="query.views.to"/>
+                        <span class="add-on">&le;</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="bs" ng-class="{'bs-collapsed': !uncollapsed.reach && empty(query.reach)}">
+                <div class="title" ng-click="collapse('reach')">Охват</div>
+                <div class="content">
+                    <div class="input-prepend">
+                        <span class="add-on">&ge;</span>
+                        <input type="text" class="input-small" ng-model="query.reach.from"/>
+                    </div>
+
+                    <div class="input-append">
+                        <input type="text" class="input-small" ng-model="query.reach.to"/>
+                        <span class="add-on">&le;</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bs" ng-class="{'bs-collapsed': !uncollapsed.sex && empty(query.sex)}">
+                <div class="title" ng-click="collapse('sex')">М / Ж</div>
+                <div class="content">
+                    <label>Парней не менее</label>
+                    <div class="input-append">
+                        <input type="text" class="input-small" ng-model="query.sex.male"/>
+                        <span class="add-on">%</span>
+                    </div>
+
+                    <label>Девушек не менее</label>
+                    <div class="input-append">
+                        <input type="text" class="input-small" ng-model="query.sex.female"/>
+                        <span class="add-on">%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bs" ng-class="{'bs-collapsed': !uncollapsed.over18 && empty(query.over18)}">
+                <div class="title" ng-click="collapse('over18')">Cтарше 18</div>
+                <div class="content">
+                    <label>Не менее</label>
+                    <div class="input-append">
+                        <input type="text" class="input-small" ng-model="query.over18.from"/>
+                        <span class="add-on">%</span>
+                    </div>
+
+                    <label>Не более</label>
+                    <div class="input-append">
+                        <input type="text" class="input-small" ng-model="query.over18.to"/>
+                        <span class="add-on">%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bs" ng-class="{'bs-collapsed': !uncollapsed.region && empty(query.region)}">
+                <div class="title" ng-click="collapse('region')">Регион</div>
+                <div class="content">
+                    <label>Страна:</label>
+                    <select class="input-small" class="input-small"  ng-model="query.region.country" ng-change="query.region.city = -1">
+                        <option value="">Любая страна</option>
+                        <option ng-repeat="c in countries" value="{{ c.cid }}" ng-selected="c.cid == query.region.country">{{ c.title }}</option>
+                    </select>
+                    <img src="img/ajax-loader2.gif" ng-show="citiesLoading">
+
+                    <div ng-show="query.region.country">
+                        <label>Город:</label>
+                        <select class="input-small" class="input-small"  ng-model="query.region.city">
+                            <option value="">Любой город</option>
+                            <option ng-repeat="c in cities" value="{{ c.cid }}" ng-selected="c.cid == query.region.city">{{ c.title }}</option>
+                        </select>
+                    </div>
+                    <label>Не менее:</label>
+                    <div class="input-append">
+                        <input type="text" class="input-small" ng-model="query.region.from"/>
+                        <span class="add-on">%</span>
+                    </div>
+                </div>
+            </div>
+
+            <input type="submit" ng-click="search()" class="btn" value="Искать"/>
+        </div>
+        <div class="span10">
+            <div ng-show="count" class="results">
+                 <div class="pagination">
+                    <ul>
+                        <li><a href="javascript:;" ng-click="search(-1);">Prev</a></li>
+                        <li><a href="javascript:;">{{ page|formatNumber }} из {{ maxPage|formatNumber }}</a></li>
+                        <li><a href="javascript:;" ng-click="search(+1);">Next</a></li>
+                    </ul>
+                </div>
+
+                <table cellspacing="0" cellpadding="0" class="table table-hover table-bordered results">
+                    <thead>
+                        <tr>
+                            <td colspan="11">
+                                <span>Найдено: <b>{{ count|formatNumber }}</b> групп </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="name header">Название</td>
+                            <td class="header" order-by="type">Тип</td>
+                            <td class="header" order-by="is_closed">Приватность</td>
+                            <td class="header" order-by="members_count">Размер</td>
+                            <td class="header" order-by="audience__visitors">Посетители</td>
+                            <td class="header" order-by="audience__views">Просмотры</td>
+                            <td class="header" order-by="audience__reach">Охват</td>
+                            <td class="header"><span tooltip='"Сортировка невозможна"'>М / Ж</span></td>
+                            <td class="header" order-by="audience__over18">&gt; 18, %</td>
+                            <td class="header">{{ query.region.country|vkGeoCountry }}</td>
+                            <td class="header">{{ query.region.city|vkGeoCity }}</td>
+                        </tr>
+                    </thead>
+
+                    <tr ng-repeat="group in groups">
+                        <td class="name" ng-click="selectRow(this);"><a href="http://vk.com/club{{ group.gid }}" target=_blank ng-bind-html-unsafe="group.name" onclick="event.stopPropagation();">{{ group.name }}</a></td>
+                        <td class="data">{{ group.type|groupType }}</td>
+                        <td class="data">{{ group.is_closed|groupPrivacy }}</td>
+                        <td class="data"><b>{{ group.members_count|formatNumber  }}</b></td>
+                        <td class="data">{{ group.audience__visitors|formatNumber }}</td>
+                        <td class="data">{{ group.audience__views|formatNumber }}</td>
+                        <td class="data">{{ group.audience__reach|formatNumber }}</td>
+                        <td class="data">{{ group.audience__male|formatNumber }} / {{ group.audience__female|formatNumber }}</td>
+                        <td class="data">{{ group.audience__over18|formatNumber }}</td>
+                        <td class="data">{{ group.country_traffic|formatNumber }}</td>
+                        <td class="data">{{ group.city_traffic|formatNumber }}</td>
+                    </tr>
+                </table>
+
+                <div class="pagination">
+                    <ul>
+                        <li><a href="javascript:;" ng-click="search(-1);">Prev</a></li>
+                        <li><a href="javascript:;">{{ page|formatNumber }} из {{ maxPage|formatNumber }}</a></li>
+                        <li><a href="javascript:;" ng-click="search(+1);">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-show="searchIsInProgress" class="loading" style="">
+    <img src="img/ajax-loader.gif">
+</div>

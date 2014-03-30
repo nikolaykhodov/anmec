@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Anmec - специальные утилиты</title>
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+    <div ng-include="'special-tools-oeq0d58t1DmteJ0RU2/partials/menu.html'">Loading...</div>
+    <div class="container" style="position: relative;" ng-view></div>
+
+    <script>
+        /*
+         * $myLoad(resources)
+         * $myLoad(resources, callback)
+         * $myLoad(resources, callback, sync)
+         */
+        function $myLoad(resources, callback, sync) {
+            sync = false;
+            callback = callback || function() {};
+            resources = resources instanceof Array ? resources : [resources];
+
+            if(resources[resources.length - 1] === true) {
+                sync = true;
+                resources = resources.slice(0, -1);
+            }
+
+            function inject(path, onload) {
+                var el;
+                if(path.match(/\.css(\?.*)?$/)) {
+                    el = document.createElement('link');
+                    el.rel = 'stylesheet';
+                    el.href = path;
+                    el.type = 'text/css';
+                } else if (path.match(/\.js(\?.*)?$/)) {
+                    el = document.createElement('script');
+                    el.src = path;
+                }
+
+                el.onload = onload;
+                el.onerror = onload;
+
+                document.body.appendChild(el);
+            }
+            var target = resources.length;
+            var index = 0;
+
+            function onLoadAsync() {
+                if(++index >= target) {
+                    return callback();
+                }
+            }
+
+            function onLoadSync() {
+                index++;
+                if(index >= target) {
+                    return callback();
+                } else {
+                    inject(resources[index], onLoadSync);
+                }
+            }
+
+            if(!sync) {
+                for(var i = 0; i < resources.length; i++) {
+                    inject(resources[i], onLoadAsync);
+                }
+            } else {
+                inject(resources[0], onLoadSync);
+            }
+        }
+
+        function loadApp() {
+            $myLoad(['lib/libs.js', 'lib/libs.css', 'special-tools-oeq0d58t1DmteJ0RU2/js/config.js', 'special-tools-oeq0d58t1DmteJ0RU2/js/app.js', true], function() {
+
+                angular.element(document).ready(function() {
+                });
+
+                var invalidator = document.location.host != 'localhost:8001' ? '?' + Math.random() : '';
+                $myLoad([ 
+                    /*
+                    * Controllers 
+                    */
+
+                    'special-tools-oeq0d58t1DmteJ0RU2/js/controllers/home-ctrl.js' + invalidator,
+                    'special-tools-oeq0d58t1DmteJ0RU2/js/controllers/private-messages-ctrl.js' + invalidator,
+
+                    /*
+                    * Directives
+                    */
+
+                    /*
+                    * Services
+                    */
+                    'js/services/global/vk-api-service.js' + invalidator,
+                    'js/services/global/vk-geo-service.js' + invalidator,
+                    'js/services/global/utils-service.js' + invalidator,
+
+                    /*
+                    * Filters
+                    */
+                    ], function() {
+                      angular.bootstrap(document, ['specialTools']);
+                    });
+            });
+        }
+
+        loadApp();
+        </script>
+</body>
+</html>

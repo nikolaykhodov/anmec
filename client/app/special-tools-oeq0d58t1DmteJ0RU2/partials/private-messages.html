@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <h3>Рассылка личных сообщений</h333>
+  <div>
+    <form>
+      <div class="row-fluid">
+        <div class="span8">
+          <label>Токен доступа (<a href="https://oauth.vk.com/authorize?client_id={{ vkAppId }}&scope=messages,offline&version=5.0&redirect_uri=blank.html&display=page&response_type=token" target="_blank">получить</a>)</label>
+          <input type="text" class="input-xxlarge" placeholder="Токен..." ng-model="accessToken">
+
+          <label>Текст сообщения</label>
+          <textarea rows="15" ng-model="message" class="input-xxlarge"></textarea>
+
+          <button type="submit" class="btn btn-primary" ng-disabled="progressAll > 999999" ng-click="send()">Отправить <span ng-show="progressAll > 0">{{ progressCurrent }} / {{ progressAll }}</span></button>
+        </div>
+
+        <div class="span4">
+          <label>Адресаты</label>
+          <textarea rows="20" ng-model="recipients"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

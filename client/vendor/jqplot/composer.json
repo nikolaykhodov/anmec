@@ -1,0 +1,9 @@
+{
+    "name": "jqplot"
+  , "description": "Pure JavaScript plotting plugin for jQuery."
+  , "keywords": ["jquery", "chart"]
+  , "homepage": "http://www.jqplot/"
+  , "author": "Ash Searle"
+  , "license": "GPL2, MIT"
+
+}

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Anmec - самая клевая аналитика в социальных сетях ;)</title>
+  <link rel="stylesheet" href="css/app.css"/>
+  <link rel="stylesheet" href="lib/libs.css"/>
+</head>
+<body>
+  <div class="init-loading"></div>
+  <div ng-include="'partials2/global/main-menu.html'">Loading...</div>
+  <div class="container" style="position: relative;" ng-view></div>
+
+  <script>
+    var invalidator = '?' + (document.location.host !== 'www-debug.anmec.me' ? Math.random(): '');
+    var appFiles = [
+      /*
+      * Controllers 
+      */
+      'js2/controllers/global/main-menu-ctrl.js',
+      'js2/controllers/global/unauthenticated-ctrl.js',
+
+      'js2/controllers/home/account-ctrl.js',
+      'js2/controllers/home/home-ctrl.js',
+      'js2/controllers/home/login-ctrl.js',
+      'js2/controllers/home/logout-ctrl.js',
+      'js2/controllers/home/prices-ctrl.js',
+
+      'js/controllers/search/vk-groups-ctrl.js' + invalidator,
+      'js/controllers/search/vk-posts-ctrl.js' + invalidator,
+
+      'js/controllers/feed/vk-wall-ctrl.js' + invalidator,
+
+      'js/controllers/vk/stat-ctrl.js' + invalidator,
+
+      /*
+      * Directives
+      */
+      'js/directives/search/order-by-directive.js' + invalidator,
+      'js/directives/global/tooltip-directive.js' + invalidator,
+      'js/directives/global/jqplot-directive.js' + invalidator,
+      'js/directives/global/dataset-directive.js' + invalidator,
+      'js/directives/vk/vk-post-directives.js' + invalidator,
+
+      /*
+      * Services
+      */
+      'js2/services/global/account-service.js',
+      'js/services/global/utils-service.js' + invalidator,
+      'js/services/global/anmec-api-service.js' + invalidator,
+      'js/services/global/vk-api-service.js' + invalidator,
+      'js/services/global/vk-geo-service.js' + invalidator,
+      'js/services/global/modal-service.js' + invalidator,
+      'js/services/feed/vk-provider-services.js' + invalidator,
+
+      /*
+      * Filters
+      */
+      'js/filters/global/vk-geo-filters.js' + invalidator,
+      'js/filters/global/date-filters.js' + invalidator,
+      'js/filters/vk/vk-link-filters.js' + invalidator,
+      'js/filters/search/search-filters.js' + invalidator,
+      'js/filters/global/format-filters.js' + invalidator
+    ];
+
+    var libFiles = [
+      'lib/libs.js', 
+      'js2/config.js', 
+      'js2/app.js', 
+      true // sync load
+    ];
+
+    /*
+    * $myLoad(resources)
+    * $myLoad(resources, onLoad)
+    * $myLoad(resources, [onLoad, onProgress], sync)
+    */
+    function $myLoad(resources, callbacks, sync) {
+      sync = false;
+      var onLoad, onProgress;
+      if(callbacks instanceof Array && callbacks.length === 2) {
+        onLoad = callbacks[0];
+        onProgress = callbacks[1];
+        } else {
+        onLoad = callbacks || function() {};
+        onProgress = function() {};
+      }
+
+      resources = resources instanceof Array ? resources : [resources];
+
+      if(resources[resources.length - 1] === true) {
+        sync = true;
+        resources = resources.slice(0, -1);
+      }
+
+      function inject(path, onload) {
+        var el;
+        if(path.match(/\.css(\?.*)?$/)) {
+          el = document.createElement('link');
+          el.rel = 'stylesheet';
+          el.href = path;
+          el.type = 'text/css';
+          } else if (path.match(/\.js(\?.*)?$/)) {
+          el = document.createElement('script');
+          el.src = path;
+        }
+
+        el.onload = onload;
+        el.onerror = onload;
+
+        document.body.appendChild(el);
+      }
+      var target = resources.length;
+      var index = 0;
+
+      function onLoadAsync() {
+        if(++index >= target) {
+          return onLoad();
+          } else {
+          return onProgress(index, target);
+        }
+      }
+
+      function onLoadSync() {
+        index++;
+        if(index >= target) {
+          return onLoad();
+          } else {
+          inject(resources[index], onLoadSync);
+          return onProgress(index, target);
+        }
+      }
+
+      if(!sync) {
+        for(var i = 0; i < resources.length; i++) {
+          inject(resources[i], onLoadAsync);
+        }
+        } else {
+        inject(resources[0], onLoadSync);
+      }
+    }
+
+    var onProgress = (function() {
+      var current = 0;
+      var all = libFiles.length + appFiles.length;
+
+      return function() {
+        var progress = document.getElementsByClassName('init-loading')[0];
+        var value = Math.round(100 * ++current / all);
+        console.log(value);
+        progress.style.width =  value + '%';
+      };
+    })();
+
+    function onLibsLoaded() {
+      $myLoad(appFiles, [onAppLoaded, onProgress]);
+    }
+
+    function onAppLoaded() {
+      var progress = document.getElementsByClassName('init-loading')[0];
+      angular.bootstrap(document, ['adminFinder']);
+      progress.style.display = 'none';
+    }
+
+    function loadApp() {
+      $myLoad(libFiles, [onLibsLoaded, onProgress]);
+    }
+
+    loadApp();
+  </script>
+</body>
+</html>

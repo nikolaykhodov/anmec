@@ -1,0 +1,19 @@
+{
+  "name": "jqplot",
+  "main": [
+    "./jquery.jqplot.js",
+    "./jquery.jqplot.css"
+  ],
+  "dependencies": {
+    "jquery": "~1.8.0"
+  },
+  "_release": "master",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "7be7f83d29000c3d3bc1f6b488367c730e5c84fe"
+  },
+  "_source": "git@bitbucket.org:hodik/jqplot.git",
+  "_target": "*",
+  "_originalSource": "git@bitbucket.org:hodik/jqplot.git"
+}

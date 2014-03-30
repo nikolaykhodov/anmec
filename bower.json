@@ -1,0 +1,19 @@
+{
+  "name": "anmec2",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "*",
+    "angular": "~1.0.7",
+    "angular-sanitize": "*",
+    "isotope": "~1.5.25",
+    "underscore": "~1.5.1",
+    "jqplot": "git@bitbucket.org:hodik/jqplot.git",
+    "angular-strap": "~0.7.4",
+    "ngInifiteScroll": "~1.0.0",
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}
